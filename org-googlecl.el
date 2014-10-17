@@ -120,7 +120,7 @@ t"
 		  (if (setq reposted (or googlecl-blog-auto-del (y-or-n-p "Delete existing blog entry?")))
 		      (googlecl-delete-blog googlecl-blogname  btitle)))))))
     (let* ((tmpfile (make-temp-file "googlecl"))
-	   (bhtml (if borg (org-export-as-html 5 nil nil 'string t) bbody))
+	   (bhtml (if borg (org-html-export-as-html 5 nil nil 'string t) bbody))
 	   (blog-command (concat 
 			  "google blogger post --blog \"" googlecl-blogname "\""
 			  (if (length btitle) (concat " --title \"" btitle "\"")) " --user \"" googlecl-username "\" " 
@@ -150,7 +150,7 @@ t"
 	(save-excursion
 	  (set-mark (goto-char (org-entry-beginning-position)))
 	  (let ((btitle (nth 4 (org-heading-components))))
-	    (org-forward-same-level 1 t)
+	    (org-forward-heading-same-level 1 t)
 	    (googlecl-blog t btitle (mapconcat  'identity  (remove googlecl-blog-tag btags) ","))))
        
 	(if (not(zerop(length googlecl-blog-tag)))
