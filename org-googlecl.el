@@ -195,6 +195,6 @@ t"
   (setq googlecl-default-title-filter (read-from-minibuffer "Title Contains:"  googlecl-default-title-filter))
   (let*((listblogcmd (concat  "google blogger list title,url,tags --title \"" googlecl-default-title-filter "\"")))
     (message "List blog command is : %s" listblogcmd)
-    (set-process-filter  (start-process-shell-command "googlecl-list" "*googlcl blogs*" listblogcmd) 'googlecl-list-process)))
+    (set-process-filter  (start-process-shell-command "googlecl-list" "*googlecl blogs*" listblogcmd) 'googlecl-list-process)))
 
 (provide 'org-googlecl)
